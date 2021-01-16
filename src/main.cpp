@@ -46,7 +46,7 @@ void setup()
       Serial.println("Turn off LED");
       digitalWrite(BUILTIN_LED, LOW);
     }
-    request->send(200, "OK");
+    request->send(200, "text/plain", "OK");
   }));
 
   server.serveStatic("/", SPIFFS, "/").setDefaultFile("index.html");
@@ -59,7 +59,7 @@ void setup()
     else
     {
       Serial.println("Not found");
-      request->send(404, "Not found");
+      request->send(404, "text/plain", "Not found");
     }
   });
 
